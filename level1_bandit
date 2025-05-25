@@ -1,0 +1,12 @@
+for login in the level1 
+command is ssh bandit1@bandit.labs.overthewire.org -p 2220
+and then we just put our password from the previous level and boom!! we are logged in
+
+on doing ls 
+we found that there exists a file named -
+if we do cat -
+it doesnt return anything
+
+so we have to use the path of that file to read that file 
+so we do cat ./-
+and the password found was 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
