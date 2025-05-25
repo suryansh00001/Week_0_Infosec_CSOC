@@ -1,0 +1,44 @@
+logged in by
+ssh bandit5@bandit.labs.overthewire.org -p 2220
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+..
+
+doing simple commands i found that there were lots of files we cannot check all one by one
+even folder by folder
+bandit5@bandit:~$ ls
+inhere
+bandit5@bandit:~$ cd inhere
+bandit5@bandit:~/inhere$ ls -la
+total 88
+drwxr-x--- 22 root bandit5 4096 May  7  2020 .
+drwxr-xr-x  3 root root    4096 May  7  2020 ..
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere00
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere01
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere02
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere03
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere04
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere05
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere06
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere07
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere08
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere09
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere10
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere11
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere12
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere13
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere14
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere15
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere16
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere17
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere18
+drwxr-x---  2 root bandit5 4096 May  7  2020 maybehere19
+
+i also tried using the same command as of previous one but i found around 7-8 ascii type files
+so i did chat gpt and found that i can use command to search for file size
+du -b -a | grep 1033
+and found a single file
+bandit5@bandit:~/inhere$ du -b -a | grep 1033
+1033    ./maybehere07/.file2
+bandit5@bandit:~/inhere$ cat ./maybehere07/.file2
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
