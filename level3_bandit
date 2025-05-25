@@ -1,0 +1,11 @@
+same login 
+ssh bandit3@bandit.labs.overthewire.org -p 2220
+password from previous level
+logged in successfully
+
+to see hidden file we can simply do 
+ls -la
+and then we get all the files there
+and hidden file was named as .hidden
+after reading that we got the password
+2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
