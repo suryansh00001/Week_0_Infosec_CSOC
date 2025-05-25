@@ -1,0 +1,11 @@
+log in using:
+ssh bandit11@bandit.labs.overthewire.org -p 2220
+dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+..
+by the hint we know that it is ROT13 cipher
+
+so we simply use tr command to transform
+
+bandit11@bandit:~$ cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
