@@ -1,0 +1,85 @@
+log in using :
+ssh bandit12@bandit.labs.overthewire.org -p 2220
+7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+..
+i was so clueless in this question..
+so i took help from chat gpt..
+it said me to make temporary directory and clone the file data.txt
+
+these are my commands...
+
+bandit12@bandit:~$ ls
+data.txt
+bandit12@bandit:~$ mktemp -d
+/tmp/tmp.cPie2iSDnI
+bandit12@bandit:~$ cd /tmp/tmp.cPie2iSDnI
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ cp ~/data.txt
+cp: missing destination file operand after '/home/bandit12/data.txt'
+Try 'cp --help' for more information.
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ cp /home/bandit12/data.txt
+cp: missing destination file operand after '/home/bandit12/data.txt'
+Try 'cp --help' for more information.
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ cp /home/bandit12/data.txt .
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+data.txt
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ mv data.txt a
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ file a
+a: ASCII text
+
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ xxd -r a b
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+a  b
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ cat b
+4␦ 4��hH��D0UP�k�.�"˟�����D�p�QG�l��J��΄�x Fc�����޺�����߰;��␦�4�
+��px��[�h���oFw9 D���9A���\Ѽ-�1�l�N�(^�@Z@T!��I␦2_=pi@�����(,Q�I��/bݐ'�y��R�
+                                                                            ���t�����2Z������<wm�i�<G�f�K���j   F��]   �pk��%��
+
+��␦Zip�47��@��\5�<�ڟQ��զ��G�8�P�����B�eI@
+�����P�YK?+�� ��$��N��%Φ�g�Nm!A6*�)-f8<!��N��O,���6Ɉ�V8�w$S�
+��x��Q-Ibandit12@bandit:/tmp/tmp.cPie2iSDnI$ file b
+b: gzip compressed data, was "data2.bin", last modified: Thu Apr 10 14:22:57 2025, max compression, from Unix, original size modulo 2^32 585
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ mv b b.gz
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ gunzip b.gz
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ cat b
+4␦ 4��hH��D0UP�k�.�"˟�����D�p�QG�l��J��΄�x Fc4�
+��px��[�h���oFw9 D���9A���\Ѽ-�1�l�N�(^�@Z@T!��I␦2_=pi@�����(,Q�I��/bݐ'�y��R�
+                                                                            ���t�����2Z������<wm�i�<G�f�K���j   F��]   �pk��%��
+
+��␦Zip�47��@��\5�<�ڟQ��զ��G�8�P�����B�eI@
+�����P�YK?+�� ��$��N��%Φ�g�Nm!A6*�)-f8<!��N��O,���6Ɉ�V8�w$S�
+��x�bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+a  b
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ file b
+b: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ mv b b.bz2
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ bunzip2 b.bz2
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ file b
+b: gzip compressed data, was "data4.bin", last modified: Thu Apr 10 14:22:57 2025, max compression, from Unix, original size modulo 2^32 20480
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ mv b b.gz
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ gunzip b.gz
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ file b
+b: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ tar -xf b
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+a  b  data5.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ tar -xf data5.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+a  b  data5.bin  data6.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ tar -xf data6.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+a  b  data5.bin  data6.bin  data8.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ tar -xf data8.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ ls
+a  b  data5.bin  data6.bin  data8.bin
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ mv data8.bin c
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ file c
+c: gzip compressed data, was "data9.bin", last modified: Thu Apr 10 14:22:57 2025, max compression, from Unix, original size modulo 2^32 49
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ mv c c.gz
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ gunzip c.gz
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ file c
+c: ASCII text
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$ cat c
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+bandit12@bandit:/tmp/tmp.cPie2iSDnI$
+
