@@ -1,0 +1,11 @@
+logged in by 
+ssh bandit7@bandit.labs.overthewire.org -p 2220
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+..
+
+this one was simple we just have to use grep tool
+bandit7@bandit:~$ cat data.txt | grep millionth
+millionth       dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+that's it
