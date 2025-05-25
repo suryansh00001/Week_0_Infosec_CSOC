@@ -1,11 +1,13 @@
 import random
 
 def russian_roulette():
-    chamber = [0, 0, 0, 0, 0, 1]
-    random.shuffle(chamber)
+   
+    
+    bullet_position = random.randint(1, 6) // showing the exact principal
     print("Spinning the gun...")
+    trigger_position = random.randint(1, 6)
 
-    if chamber[0] == 1:
+    if bullet_position == trigger_position:
         print("Lmao! .. You're ded...")
     else:
         print("Nigga .. you're lucky...")
