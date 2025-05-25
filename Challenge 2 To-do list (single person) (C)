@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_TASKS 100
+#define MAX_LEN 100
+
+void load_tasks(char tasks[][MAX_LEN], int *count) {
+    FILE *fp = fopen("tasks.txt", "r");
+    *count = 0;
+    if (fp == NULL) return;
+
+    while (fgets(tasks[*count], MAX_LEN, fp) != NULL) {
+        size_t len = strlen(tasks[*count]);
+        if (len > 0 && tasks[*count][len - 1] == '\n')
+            tasks[*count][len - 1] = '\0';
+        (*count)++;
+        if (*count >= MAX_TASKS) break;
+    }
+    fclose(fp);
+}
+
+void save_tasks(char tasks[][MAX_LEN], int count) {
+    FILE *fp = fopen("tasks.txt", "w");
+    if (fp == NULL) {
+        printf("Error opening file for writing!\n");
+        return;
+    }
+
+    for (int i = 0; i < count; i++) {
+        fprintf(fp, "%s\n", tasks[i]);
+    }
+    fclose(fp);
+}
+
+int main() {
+    char tasks[MAX_TASKS][MAX_LEN];
+    int count = 0;
+
+    load_tasks(tasks, &count);
+
+    while (1) {
+        printf("\n--- TO DO LIST ---\n");
+        printf("1. Show tasks\n");
+        printf("2. Add task\n");
+        printf("3. Remove task\n");
+        printf("4. Quit\n");
+        printf("Enter your choice: ");
+
+        int choice;
+        scanf("%d", &choice);
+        getchar(); // consume newline after number input
+
+        if (choice == 1) {
+            if (count == 0) {
+                printf("No tasks yet.\n");
+            } else {
+                for (int i = 0; i < count; i++) {
+                    printf("%d. %s\n", i + 1, tasks[i]);
+                }
+            }
+        }
+        else if (choice == 2) {
+            if (count >= MAX_TASKS) {
+                printf("Task list full!\n");
+                continue;
+            }
+            printf("Enter your task: ");
+            
+            size_t len = strlen(tasks[count]);
+            if (len > 0 && tasks[count][len - 1] == '\n')
+                tasks[count][len - 1] = '\0';
+
+            count++;
+            save_tasks(tasks, count);
+            printf("Task added.\n");
+        }
+        else if (choice == 3) {
+            if (count == 0) {
+                printf("No tasks to remove.\n");
+                continue;
+            }
+            for (int i = 0; i < count; i++) {
+                printf("%d. %s\n", i + 1, tasks[i]);
+            }
+            printf("Enter task number to remove: ");
+            int rem;
+            scanf("%d", &rem);
+            
+
+            if (rem < 1 || rem > count) {
+                printf("Invalid task number.\n");
+            } else {
+                for (int i = rem - 1; i < count - 1; i++) {
+                    strcpy(tasks[i], tasks[i + 1]);
+                }
+                count--;
+                save_tasks(tasks, count);
+                printf("Task removed.\n");
+            }
+        }
+        else if (choice == 4) {
+            printf("Bye!\n");
+            break;
+        }
+        else {
+            printf("Wrong input.\n");
+        }
+    }
+
+    return 0;
+}
