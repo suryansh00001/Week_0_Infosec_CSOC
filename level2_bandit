@@ -1,0 +1,16 @@
+same login as previous level,
+ssh bandit2@bandit.labs.overthewire.org -p 2220
+and then putting password from previous level ..
+
+we can't directly read the file using cat , it gives..
+
+bandit2@bandit:~$ cat spaces in this filename
+cat: spaces: No such file or directory
+cat: in: No such file or directory
+cat: this: No such file or directory
+cat: filename: No such file or directory
+
+so we can use the same trick as previous level
+cat ./spaces in the this filename
+and we got the password again
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
