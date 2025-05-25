@@ -1,0 +1,28 @@
+logged in by using 
+ssh bandit13@bandit.labs.overthewire.org -p 2220
+FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+..
+bandit13@bandit:~$ ls
+sshkey.private
+bandit13@bandit:~$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+
+by reading theory I learnt how I can download something from the server
+scp -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private .         
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit13@bandit.labs.overthewire.org's password: 
+sshkey.private   (downloaded) 100%
+
+after that to login to level 14 we used 
+ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+but it said that it is too open.. 
+on chat gpt it gave me some commands and I used those spells
+ as i was doing all of this on windows so 
+
+cp /mnt/c/Users/LENOVO/sshkey.private ~/
+chmod 600 ~/sshkey.private
+ssh -i ~/sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+and it logged me in..
