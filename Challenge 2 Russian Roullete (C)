@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void russian_roulette() {
+    srand(time(NULL));  // Seed randomness (used gpt for that)
+
+    int bullet_position = rand() % 6 + 1;   
+    int trigger_position = rand() % 6 + 1;  
+
+    printf("Spinning the gun...\n");
+
+    if (bullet_position == trigger_position) {
+        printf("Lmao! .. You're dead...\n");
+    } else {
+        printf("You're lucky...\n");
+    }
+}
+
+int main() {
+    russian_roulette();
+    return 0;
+}
