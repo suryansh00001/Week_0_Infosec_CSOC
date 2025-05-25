@@ -1,0 +1,27 @@
+logged in by
+ssh bandit9@bandit.labs.overthewire.org -p 2220
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+..
+
+used simple string and grep command
+bandit9@bandit:~$ strings data.txt | grep =
+,k=?
+@k*=
+========== the
+#e=in
+g+=ypF
+ea=+
+K>=*<
+========== password{k
+=========== is
+1R=j/
+e=<2g%
++G/YD=
+=wDk
+=3?lOt
+========== FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+=D!f
+H =sS
+
+password :FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
