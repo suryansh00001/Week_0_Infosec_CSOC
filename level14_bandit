@@ -1,0 +1,18 @@
+to loggin you can visit the previous problem page
+..
+
+and the hint of previous problem it was given that the path of the password is /etc/bandit_pass/bandit14
+so we can simple cat
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+and then we can login to next level by reading the instruction of this level
+it states that we have to submit it to localhost with port = 30000
+
+as intructed , I did
+bandit14@bandit:~$ nc localhost 30000
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+Correct!
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+this is the simple sober password for then next level
