@@ -1,0 +1,90 @@
+FILENAME = "tasks.txt"
+// this just uses one file tasks.txt and append according the username entered and make a page for him kind of..
+def load_tasks(username):
+    tasks = []
+    try:
+        with open(FILENAME, "r") as f:
+            for line in f:
+                if ":" in line:
+                    user, task = line.strip().split(":", 1)
+                    if user == username:
+                        tasks.append(task)
+    except FileNotFoundError:
+        pass
+    return tasks
+
+def save_tasks_for_all(all_tasks):
+    with open(FILENAME, "w") as f:
+        for user, task in all_tasks:
+            f.write(f"{user}:{task}\n")
+
+def load_all_tasks():
+    all_tasks = []
+    try:
+        with open(FILENAME, "r") as f:
+            for line in f:
+                if ":" in line:
+                    user, task = line.strip().split(":", 1)
+                    all_tasks.append((user, task))
+    except FileNotFoundError: 
+        pass
+    return all_tasks
+
+def main():
+    username = input("Enter your username: ").strip()
+    tasks = load_tasks(username)
+
+    while True:
+        print(f"\n--- TO DO LIST for {username} ---")
+        print("1. Show tasks")
+        print("2. Add task")
+        print("3. Remove task")
+        print("4. Quit")
+        choice = input("Enter your choice: ").strip()
+
+        if choice == "1":
+            if not tasks:
+                print("No tasks yet.")
+            else:
+                for i, task in enumerate(tasks, 1):
+                    print(f"{i}. {task}")
+
+        elif choice == "2":
+            new_task = input("Enter your task: ").strip()
+            all_tasks = load_all_tasks()
+            all_tasks.append((username, new_task))
+            save_tasks_for_all(all_tasks)
+            tasks.append(new_task)
+            print("Task added.")
+
+        elif choice == "3":
+            if not tasks:
+                print("No tasks to remove.")
+                continue
+            for i, task in enumerate(tasks, 1):
+                print(f"{i}. {task}")
+            try:
+                idx = int(input("Enter task number to remove: ").strip())
+                if 1 <= idx <= len(tasks):
+                    task_to_remove = tasks[idx - 1]
+                    all_tasks = load_all_tasks()
+                    for i in range(len(all_tasks)):
+                        if all_tasks[i][0] == username and all_tasks[i][1] == task_to_remove:
+                            del all_tasks[i]
+                            break
+                    save_tasks_for_all(all_tasks)
+                    tasks.pop(idx - 1)
+                    print("Task removed.")
+                else:
+                    print("Invalid task number.")
+            except ValueError:
+                print("Please enter a valid number.")
+
+        elif choice == "4":
+            print("Bye!")
+            break
+        else:
+            print("Invalid choice.")
+
+if __name__ == "__main__":
+    main()
