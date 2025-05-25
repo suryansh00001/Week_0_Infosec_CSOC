@@ -1,0 +1,14 @@
+import random
+
+def russian_roulette():
+    chamber = [0, 0, 0, 0, 0, 1]
+    random.shuffle(chamber)
+    print("Spinning the gun...")
+
+    if chamber[0] == 1:
+        print("Lmao! .. You're ded...")
+    else:
+        print("Nigga .. you're lucky...")
+
+if __name__ == "__main__":
+    russian_roulette()
