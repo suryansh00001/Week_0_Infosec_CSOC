@@ -28,13 +28,13 @@ Before diving in, make sure you have:
 
 ## 📁 Repository Structure
 
-\`\`\`bash
-Week_0_Infosec_CSOC/
-│
-├── challenge_1/        # Bandit wargame level writeups (OverTheWire)
-├── challenge_2/        # Programming tasks in multiple languages
-└── README.md           # This file
-\`\`\`
+
+    Week_0_Infosec_CSOC/
+    │
+    ├── challenge_1/        # Bandit wargame level writeups (OverTheWire)
+    ├── challenge_2/        # Programming tasks in multiple languages
+    └── README.md           # This file
+    
 
 ---
 
